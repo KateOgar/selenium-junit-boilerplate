@@ -5,11 +5,12 @@ import annotations.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.LoginPage;
 import page.MainPage;
 
 import java.time.Duration;
 
-public class MainPageSteps {
+public class LoginSteps {
 
     @Driver
     private WebDriver driver;
@@ -17,10 +18,13 @@ public class MainPageSteps {
     @Page
     private MainPage mainPage;
 
-    public MainPageSteps goToLoginPage() {
+    @Page
+    private LoginPage loginPage;
+
+    public LoginSteps goToLoginPage() {
         mainPage.signInLinkClick();
         new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfAllElements(mainPage.getPageLoaded()));
+                .until(ExpectedConditions.visibilityOfAllElements(loginPage.getPageLoaded()));
         return this;
     }
 

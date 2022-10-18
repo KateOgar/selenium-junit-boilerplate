@@ -10,7 +10,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import page.MainPage;
-import steps.MainPageSteps;
+import steps.LoginSteps;
 import util.props.ConfigProp;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,7 +26,7 @@ public class MainPageTest {
     @Page
     private MainPage mainPage;
     @Steps
-    private MainPageSteps onMainPage;
+    private LoginSteps onMainPage;
 
     private ConfigProp cfg = ConfigFactory.create(ConfigProp.class);
 

@@ -3,18 +3,18 @@ package util.reflection;
 import annotations.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import util.NoSuchBrowserExeption;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 public class Injector {
 
-    public static void inject(Object target, WebDriver driver) {
+    public static void inject(Object target, WebDriver driver) throws NoSuchBrowserExeption {
         Field[] allFields = target.getClass().getDeclaredFields();
-        Object subject;
 
         for (Field f : allFields) {
-            subject = SubjectProvider.provideSubject(f);
+            Object subject = SubjectProvider.provideSubject(f);
             if (subject != null) {
                 try {
                     f.setAccessible(true);

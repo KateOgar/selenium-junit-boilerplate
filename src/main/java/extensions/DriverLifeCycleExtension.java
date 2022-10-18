@@ -3,12 +3,21 @@ package extensions;
 import browser.drivers.DriverStore;
 import org.junit.jupiter.api.extension.*;
 import org.openqa.selenium.WebDriver;
+import util.NoSuchBrowserExeption;
 import util.reflection.Injector;
 
 import java.util.Optional;
 
 public class DriverLifeCycleExtension implements BeforeAllCallback, AfterAllCallback {
-    private static WebDriver driver = DriverStore.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = DriverStore.getDriver();
+        } catch (NoSuchBrowserExeption e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
     public DriverLifeCycleExtension() {
     }
@@ -19,7 +28,11 @@ public class DriverLifeCycleExtension implements BeforeAllCallback, AfterAllCall
 
         testInstance.ifPresent(
                 i -> {
-                    Injector.inject(i, driver);
+                    try {
+                        Injector.inject(i, driver);
+                    } catch (NoSuchBrowserExeption e) {
+                        throw new RuntimeException(e.getMessage());
+                    }
                 }
         );
     }

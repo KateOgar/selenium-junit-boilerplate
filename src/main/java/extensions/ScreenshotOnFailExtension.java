@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
+import util.NoSuchBrowserExeption;
 import util.props.ConfigProp;
 
 
@@ -30,7 +31,7 @@ public class ScreenshotOnFailExtension implements TestWatcher {
             FileUtils.deleteDirectory(SCREENSHOT_PATH);
             File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE); // make the screenshot
             FileUtils.copyFile(scrFile, new File(String.format("%s/%s.png", SCREENSHOT_PATH, fileName))); //rename it with test method
-        } catch (IOException | WebDriverException e) {
+        } catch (IOException | WebDriverException | NoSuchBrowserExeption e) {
             System.out.println("screenshot failure: " + e.getMessage());
         }
     }
@@ -39,21 +40,4 @@ public class ScreenshotOnFailExtension implements TestWatcher {
         return context.getDisplayName().replaceAll("[()]", "");
     }
 
-//    public byte[] getScreenshot(ExtensionContext context) {
-//        String fileName = getTestName(context);
-//
-//        try {
-//            FileUtils.deleteDirectory(SCREENSHOT_PATH);
-//            File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE); // make the screenshot
-//            FileUtils.copyFile(scrFile, new File(String.format("%s/%s.png", SCREENSHOT_PATH, fileName))); //rename it with test method
-//        } catch (IOException | WebDriverException e) {
-//            System.out.println("screenshot failure: " + e.getMessage());
-//        }
-//        return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-//    }
-//
-//    @Attachment(value = "Page screenshot", type = "image/png")
-//    public byte[] saveScreenshot(byte[] screenShot, ExtensionContext context) {
-//        return getScreenshot(context);
-//    }
 }
