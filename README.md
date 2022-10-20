@@ -40,7 +40,7 @@ Factory for browser driver instance. Use singleton pattern for get only one driv
 ## extensions
 Part of JUnit5 feature to organize testing flow in a flexible way. Basically in project consist of:
 - lifecycle extension to initialize and manage driver, page and steps instances
-- extension for organize reporting with screenshoting on fail
+- extension for organize reporting with screenshooting on fail
 - extension to make screenshots on fail and store them in folder (screenshot directory can be changed
 in config.properties file)
 
@@ -63,7 +63,7 @@ Contains of steps file - methods which faced often in the tests and can be reuse
 Has two directories:
 - props - interface of properties to easily interact with props with owner library help. You can also add some default values for them in this file.
 - reflection - consist of Injector file, which implement reflection mechanism for all field in class
-and SubjectProvider class, which help to get instance to inject for. For instance, if you have annotation @Driver - you need inject driver inctance,
+and SubjectProvider class, which help to get instance to inject for. For instance, if you have annotation @Driver - you need inject driver instance,
 if you have annotation @Page - you need inject instance of page on some Test or Steps class.
 
 ## resources
