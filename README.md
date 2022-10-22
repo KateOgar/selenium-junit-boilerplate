@@ -15,7 +15,7 @@ Easy to use through the reflection to initialize most important instances (like 
 - [Maven](https://maven.apache.org) - as a Java build tool
 - [Docker](https://www.docker.com) - as a platform to run tests in containers with various browsers 
 - [Docker images](https://github.com/SeleniumHQ/docker-selenium) for Selenium grid
-- [Faker](https://github.com/DiUS/java-faker) - as a testing data generator 
+- [Faker](https://github.com/DiUS/java-faker) - recommended as a testing data generator 
 
 # Project structure
 
