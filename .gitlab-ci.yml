@@ -1,0 +1,15 @@
+      workflow:
+        rules:
+          -if: '$CI_PIPELINE_SOURCE == "push"'
+
+        stages:
+          - build
+          - api_tests
+          - integration_tests
+
+        build_job:
+          stage: build
+          image: maven:3-jdk-11
+          script:
+            - mvn clean build
+            -
